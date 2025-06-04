@@ -1,13 +1,50 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React, { useState } from 'react';
+import { WelcomeScreen } from '@/components/WelcomeScreen';
+import { QuizGame } from '@/components/QuizGame';
+import { ResultScreen } from '@/components/ResultScreen';
+
+type GameState = 'welcome' | 'playing' | 'results';
 
 const Index = () => {
+  const [gameState, setGameState] = useState<GameState>('welcome');
+  const [finalScore, setFinalScore] = useState(0);
+  const [totalQuestions, setTotalQuestions] = useState(0);
+
+  const startGame = () => {
+    setGameState('playing');
+  };
+
+  const finishGame = (score: number, total: number) => {
+    setFinalScore(score);
+    setTotalQuestions(total);
+    setGameState('results');
+  };
+
+  const restartGame = () => {
+    setFinalScore(0);
+    setTotalQuestions(0);
+    setGameState('playing');
+  };
+
+  const goHome = () => {
+    setGameState('welcome');
+    setFinalScore(0);
+    setTotalQuestions(0);
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <>
+      {gameState === 'welcome' && <WelcomeScreen onStart={startGame} />}
+      {gameState === 'playing' && <QuizGame onFinish={finishGame} />}
+      {gameState === 'results' && (
+        <ResultScreen 
+          score={finalScore} 
+          totalQuestions={totalQuestions}
+          onRestart={restartGame}
+          onHome={goHome}
+        />
+      )}
+    </>
   );
 };
 
