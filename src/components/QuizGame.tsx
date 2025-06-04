@@ -150,34 +150,34 @@ export const QuizGame: React.FC<QuizGameProps> = ({ onFinish }) => {
   const progress = ((currentQuestion + 1) / questions.length) * 100;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-football-grass via-football-field to-football-grass-dark flex items-center justify-center p-4">
-      <Card className="w-full max-w-4xl mx-auto p-8 bg-white/95 backdrop-blur-sm shadow-2xl animate-slide-up">
-        {/* Header */}
-        <div className="flex justify-between items-center mb-8">
-          <div className="flex items-center space-x-4">
-            <div className="bg-football-blue text-white px-4 py-2 rounded-full font-bold">
-              Question {currentQuestion + 1}/{questions.length}
+    <div className="min-h-screen bg-gradient-to-br from-football-grass via-football-field to-football-grass-dark flex items-center justify-center p-2 sm:p-4">
+      <Card className="w-full max-w-sm sm:max-w-4xl mx-auto p-4 sm:p-8 bg-white/95 backdrop-blur-sm shadow-2xl animate-slide-up border-0 rounded-3xl sm:rounded-2xl">
+        {/* Header - Mobile Optimized */}
+        <div className="flex flex-col sm:flex-row justify-between items-center mb-6 sm:mb-8 space-y-3 sm:space-y-0">
+          <div className="flex items-center space-x-2 sm:space-x-4">
+            <div className="bg-football-blue text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full font-bold text-sm sm:text-base">
+              Q {currentQuestion + 1}/{questions.length}
             </div>
-            <div className={`px-3 py-1 rounded-full text-white text-sm ${getDifficultyColor(questions[currentQuestion].difficulty)}`}>
+            <div className={`px-2 py-1 sm:px-3 sm:py-1 rounded-full text-white text-xs sm:text-sm ${getDifficultyColor(questions[currentQuestion].difficulty)}`}>
               {questions[currentQuestion].difficulty.toUpperCase()}
             </div>
           </div>
           
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-2 text-football-blue">
-              <Trophy size={20} />
-              <span className="font-bold">{score}</span>
+          <div className="flex items-center space-x-4 sm:space-x-6">
+            <div className="flex items-center space-x-1.5 sm:space-x-2 text-football-blue">
+              <Trophy size={18} className="sm:w-5 sm:h-5" />
+              <span className="font-bold text-sm sm:text-base">{score}</span>
             </div>
-            <div className={`flex items-center space-x-2 ${timeLeft <= 5 ? 'text-red-500 animate-pulse' : 'text-football-blue'}`}>
-              <Clock size={20} />
-              <span className="font-bold">{timeLeft}s</span>
+            <div className={`flex items-center space-x-1.5 sm:space-x-2 ${timeLeft <= 5 ? 'text-red-500 animate-pulse' : 'text-football-blue'}`}>
+              <Clock size={18} className="sm:w-5 sm:h-5" />
+              <span className="font-bold text-lg sm:text-base">{timeLeft}s</span>
             </div>
           </div>
         </div>
 
-        {/* Progress Bar */}
-        <div className="mb-8">
-          <Progress value={progress} className="h-3 bg-gray-200">
+        {/* Progress Bar - Mobile Optimized */}
+        <div className="mb-6 sm:mb-8">
+          <Progress value={progress} className="h-2 sm:h-3 bg-gray-200">
             <div 
               className="h-full bg-gradient-to-r from-football-blue to-football-grass transition-all duration-500 rounded-full"
               style={{ width: `${progress}%` }}
@@ -185,48 +185,48 @@ export const QuizGame: React.FC<QuizGameProps> = ({ onFinish }) => {
           </Progress>
         </div>
 
-        {/* Question */}
-        <div className="mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 text-center mb-6 animate-bounce-in">
+        {/* Question - Mobile Optimized */}
+        <div className="mb-6 sm:mb-8">
+          <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-gray-800 text-center mb-4 sm:mb-6 animate-bounce-in leading-tight px-2">
             {questions[currentQuestion].question}
           </h2>
         </div>
 
-        {/* Answer Options */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        {/* Answer Options - Mobile Optimized */}
+        <div className="space-y-3 sm:grid sm:grid-cols-1 md:grid-cols-2 sm:gap-4 sm:space-y-0 mb-6 sm:mb-8">
           {questions[currentQuestion].options.map((option, index) => (
             <Button
               key={index}
               onClick={() => handleAnswerSelect(index)}
-              className={`h-auto p-6 text-left justify-start text-lg font-medium ${getButtonClass(index)}`}
+              className={`h-auto p-4 sm:p-6 text-left justify-start text-base sm:text-lg font-medium w-full border-0 rounded-2xl active:scale-95 sm:hover:scale-105 transition-all duration-300 ${getButtonClass(index)}`}
               disabled={isAnswered}
             >
               <div className="flex items-center justify-between w-full">
                 <span className="flex items-center">
-                  <span className="bg-football-blue text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 text-sm font-bold">
+                  <span className="bg-football-blue text-white rounded-full w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center mr-3 sm:mr-4 text-xs sm:text-sm font-bold flex-shrink-0">
                     {String.fromCharCode(65 + index)}
                   </span>
-                  {option}
+                  <span className="min-w-0 text-left">{option}</span>
                 </span>
-                <ChevronRight size={20} className="opacity-50" />
+                <ChevronRight size={16} className="opacity-50 flex-shrink-0 ml-2" />
               </div>
             </Button>
           ))}
         </div>
 
-        {/* Stats Bar */}
-        <div className="flex justify-center space-x-8 text-sm text-gray-600">
-          <div className="flex items-center space-x-2">
-            <Target size={16} />
-            <span>Précision: {currentQuestion > 0 ? Math.round((score / currentQuestion) * 100) : 0}%</span>
+        {/* Stats Bar - Mobile Optimized */}
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-gray-600">
+          <div className="flex items-center space-x-1.5 sm:space-x-2">
+            <Target size={14} className="sm:w-4 sm:h-4" />
+            <span className="whitespace-nowrap">Précision: {currentQuestion > 0 ? Math.round((score / currentQuestion) * 100) : 0}%</span>
           </div>
-          <div className="flex items-center space-x-2">
-            <Zap size={16} />
-            <span>Vitesse: {timeLeft > 15 ? 'Rapide' : timeLeft > 10 ? 'Moyen' : 'Lent'}</span>
+          <div className="flex items-center space-x-1.5 sm:space-x-2">
+            <Zap size={14} className="sm:w-4 sm:h-4" />
+            <span className="whitespace-nowrap">Vitesse: {timeLeft > 15 ? 'Rapide' : timeLeft > 10 ? 'Moyen' : 'Lent'}</span>
           </div>
-          <div className="flex items-center space-x-2">
-            <Users size={16} />
-            <span>Niveau: {questions[currentQuestion].difficulty}</span>
+          <div className="flex items-center space-x-1.5 sm:space-x-2">
+            <Users size={14} className="sm:w-4 sm:h-4" />
+            <span className="whitespace-nowrap">Niveau: {questions[currentQuestion].difficulty}</span>
           </div>
         </div>
       </Card>
