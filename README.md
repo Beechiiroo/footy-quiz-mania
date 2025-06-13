@@ -1,73 +1,44 @@
-# Welcome to your Lovable project
+⚽ Footy Quiz Mania – Quiz interactif sur le football
+Footy Quiz Mania est une application web interactive qui met à l’épreuve vos connaissances sur le monde du football. Des questions sur les joueurs, les clubs, les Coupes du Monde, les records et les moments mythiques vous attendent dans ce jeu dynamique, rapide et fun !
 
-## Project info
+Développée avec une stack moderne, l'application garantit une expérience fluide, responsive et visuellement attrayante.
 
-**URL**: https://lovable.dev/projects/52bacf2f-8d0a-46ab-af71-2f3f39ba903b
+🧰 Technologies utilisées
+⚡ Vite – Pour un démarrage rapide et un rafraîchissement instantané.
 
-## How can I edit this code?
+🔐 TypeScript – Pour une meilleure fiabilité du code.
 
-There are several ways of editing your application.
+⚛️ React – Pour construire des composants interactifs.
 
-**Use Lovable**
+🧩 shadcn-ui – Pour des composants stylés, accessibles et personnalisables.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/52bacf2f-8d0a-46ab-af71-2f3f39ba903b) and start prompting.
+💨 Tailwind CSS – Pour un design clair, rapide et responsive.
 
-Changes made via Lovable will be committed automatically to this repo.
+🎮 Fonctionnalités principales
+🧠 Quiz en temps réel : Série de questions à choix multiples sur le football.
 
-**Use your preferred IDE**
+🏆 Niveaux de difficulté : Facile, Moyen, Difficile.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+📊 Système de score : Points attribués selon la rapidité et la justesse des réponses.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+🔁 Rejouer le quiz : Possibilité de recommencer avec un nouveau lot de questions.
 
-Follow these steps:
+🧍‍♂️ Mode solo ou multi-joueur (optionnel) : Défiez vos amis !
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+📱 Design responsive : Compatible avec desktop, tablette et mobile.
+
+▶️ Lancement du projet
+bash
+Copy
+Edit
+# Étape 1 : Cloner le dépôt
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Étape 2 : Accéder au dossier du projet
+cd footy-quiz-mania
 
-# Step 3: Install the necessary dependencies.
+# Étape 3 : Installer les dépendances
 npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Étape 4 : Lancer le serveur de développement
 npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/52bacf2f-8d0a-46ab-af71-2f3f39ba903b) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
